@@ -2,6 +2,7 @@ package jpabook.jpashop;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,13 +21,9 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //주문을 찾고, 주문에서 주문자 정보를 찾고싶음
-            Order order = em.find(Order.class, 1L);
-            String memberId = order.getMemberId();
-
-            em.find(Member.class, memberId);
-
-
+            //주문한다고 가정
+            Order order = new Order();
+            order.addOrderItem(new OrderItem()); //편의 메서드
 
 
         }catch (Exception e) {
